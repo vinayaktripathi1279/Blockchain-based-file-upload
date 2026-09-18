@@ -1,0 +1,44 @@
+# Compiled class files & build artifacts
+**/target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Node dependencies
+**/node_modules/
+**/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Hardhat artifacts & cache
+blockchain/artifacts/
+blockchain/cache/
+blockchain/typechain/
+blockchain/typechain-types/
+
+# Uploaded test files (keep directory structure)
+uploads/encrypted/*
+!uploads/encrypted/.gitkeep
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db

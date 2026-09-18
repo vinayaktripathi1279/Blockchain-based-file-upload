@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: blockchain-file-transfer-backend
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: FILE_ENCRYPTION_KEY
+        value: MySecr3t256BitKeyForFileEncryp!
+      - key: JWT_SECRET
+        value: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      - key: DB_URL
+        value: jdbc:h2:mem:file_transfer_db;DB_CLOSE_DELAY=-1;MODE=MySQL
+      - key: DB_USERNAME
+        value: sa
+      - key: DB_PASSWORD
+        value: ""
