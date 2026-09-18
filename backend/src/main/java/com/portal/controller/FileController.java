@@ -75,17 +75,21 @@ public class FileController {
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<FileTransferDto> uploadFile(
             @RequestParam("file") MultipartFile file,
-            @RequestParam("recipientId") Long recipientId,
+            @RequestParam(value = "recipientId", required = false) Long recipientId,
             Authentication authentication,
             HttpServletRequest request) {
 
         // 1. Validation
         fileStorageService.validateFile(file);
         User sender = userService.getUserByEmail(authentication.getName());
-        User recipient = userService.getUserById(recipientId);
+        User recipient = sender; // Default to personal vault (self)
 
-        if (sender.getId().equals(recipient.getId())) {
-            throw new IllegalArgumentException("Cannot send a file to yourself. Please select another recipient.");
+        if (recipientId != null) {
+            try {
+                recipient = userService.getUserById(recipientId);
+            } catch (Exception e) {
+                recipient = sender;
+            }
         }
 
         try {

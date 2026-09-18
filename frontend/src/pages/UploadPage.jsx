@@ -53,10 +53,6 @@ const UploadPage = () => {
       setError('Please select a file to upload.');
       return;
     }
-    if (!recipientId) {
-      setError('Please select a recipient.');
-      return;
-    }
 
     setError('');
     setLoading(true);
@@ -65,7 +61,9 @@ const UploadPage = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('recipientId', recipientId);
+      if (recipientId) {
+        formData.append('recipientId', recipientId);
+      }
 
       // Advance visual steps to show user what the backend pipeline is doing
       setTimeout(() => setUploadStep(2), 400); // AES-256 Encrypting
@@ -135,34 +133,36 @@ const UploadPage = () => {
         )}
 
         <form onSubmit={handleSubmit}>
-          {/* Recipient Selection */}
+          {/* Transfer Destination */}
           <div className="form-group" style={{ marginBottom: '1.5rem' }}>
             <label className="form-label" style={{ fontWeight: 600 }}>
-              Select Authorized Recipient
+              Transfer Destination
             </label>
-            {loadingUsers ? (
-              <div style={{ fontSize: '0.85rem', color: '#64748b' }}>Loading available recipients...</div>
-            ) : recipients.length === 0 ? (
+            {recipients.length === 0 ? (
               <div style={{
-                background: 'rgba(245, 158, 11, 0.12)',
-                border: '1px solid rgba(245, 158, 11, 0.25)',
-                borderRadius: '8px',
-                padding: '0.75rem',
+                background: 'rgba(6, 182, 212, 0.1)',
+                border: '1px solid rgba(6, 182, 212, 0.3)',
+                borderRadius: '10px',
+                padding: '0.85rem 1rem',
                 fontSize: '0.85rem',
-                color: '#fbbf24'
+                color: '#22d3ee',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
               }}>
-                No other users found. Please register another user (e.g. Bob or Alice) in a new tab to test file transfer.
+                <ShieldCheck size={18} />
+                <span><strong>Personal Secure Vault (Self)</strong> &mdash; Encrypt with AES-256 & anchor SHA-256 fingerprint to Blockchain under your identity.</span>
               </div>
             ) : (
               <select
                 className="form-select"
                 value={recipientId}
                 onChange={(e) => setRecipientId(e.target.value)}
-                required
               >
+                <option value="">Personal Secure Vault (Keep for Myself)</option>
                 {recipients.map((rec) => (
                   <option key={rec.id} value={rec.id}>
-                    {rec.name} ({rec.email}) - {rec.role}
+                    Transfer to: {rec.name} ({rec.email})
                   </option>
                 ))}
               </select>
@@ -258,7 +258,7 @@ const UploadPage = () => {
             type="submit"
             className="btn btn-primary"
             style={{ width: '100%', padding: '0.9rem', fontSize: '1rem' }}
-            disabled={loading || !file || !recipientId}
+            disabled={loading || !file}
           >
             {loading ? 'Processing Transfer...' : 'Encrypt & Register on Blockchain'} <ArrowRight size={18} />
           </button>
