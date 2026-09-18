@@ -4,6 +4,22 @@ An enterprise-grade, cryptographically backed file transfer portal combining **S
 
 ---
 
+## 🌐 Live Demo & Deployment Links
+
+| Resource | Live Link | Status |
+| :--- | :--- | :--- |
+| **🚀 Live Demo Website** | [https://frontend-tau-blue-32.vercel.app](https://frontend-tau-blue-32.vercel.app) | **Online (Vercel)** |
+| **⚙️ Backend API** | [https://blockchain-file-transfer.onrender.com](https://blockchain-file-transfer.onrender.com) | **Online (Render)** |
+| **📊 Render Dashboard** | [https://dashboard.render.com/web/srv-damc9gm1egvs73bmgse0](https://dashboard.render.com/web/srv-damc9gm1egvs73bmgse0) | **Active** |
+| **📁 Source Code** | [https://github.com/vinayaktripathi1279/Blockchain-based-file-upload](https://github.com/vinayaktripathi1279/Blockchain-based-file-upload) | **GitHub** |
+
+> **Quick Demo Login:**
+> - **User A (Sender):** `alice@example.com` / `password123`
+> - **User B (Recipient):** `bob@example.com` / `password123`
+> *(One-click fast-fill buttons are also available right on the login page!)*
+
+---
+
 ## 🌟 Project Overview
 
 Traditional cloud file transfers rely purely on database records and trusting server operators. If a rogue administrator, compromised disk, or malicious actor alters a stored file, standard systems cannot prove the file was tampered with.
