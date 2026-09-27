@@ -1,5 +1,9 @@
 # Blockchain-Based Secure File Transfer Portal
 
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-frontend--tau--blue--32.vercel.app-00dfa2?style=for-the-badge&logo=vercel&logoColor=white)](https://frontend-tau-blue-32.vercel.app)
+[![Backend API](https://img.shields.io/badge/⚙️%20Backend-Online%20(Render)-46a2f3?style=for-the-badge&logo=render&logoColor=white)](https://blockchain-file-transfer.onrender.com)
+[![License](https://img.shields.io/badge/Security-Zero--Trust-blueviolet?style=for-the-badge&logo=springsecurity&logoColor=white)](#-system-architecture)
+
 An enterprise-grade, cryptographically backed file transfer portal combining **Spring Boot 3**, **React (Vite)**, **AES-256 Symmetric Encryption**, and an **Ethereum (Hardhat) Smart Contract** for zero-trust file integrity verification and tamper detection.
 
 ---
